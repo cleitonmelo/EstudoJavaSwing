@@ -1,4 +1,4 @@
-package br.com.estudo.java.swing.cadastropessoa.model;
+package br.com.estudo.java.swing.people.model;
 
 public class Pessoa {
 
