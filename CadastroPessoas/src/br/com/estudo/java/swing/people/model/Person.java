@@ -1,12 +1,16 @@
 package br.com.estudo.java.swing.people.model;
 
-public class Pessoa {
+public class Person {
 
 	private int id;
 	private String nome;
 	private int idade;
+	
+	public Person() {
+		
+	}
 
-	public Pessoa(int id, String nome, int idade) {
+	public Person(int id, String nome, int idade) {
 		this.id = id;
 		this.nome = nome;
 		this.idade = idade;

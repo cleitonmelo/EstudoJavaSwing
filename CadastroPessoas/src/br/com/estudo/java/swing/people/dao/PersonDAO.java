@@ -7,21 +7,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.estudo.java.swing.people.model.Pessoa;
+import br.com.estudo.java.swing.people.model.Person;
 import br.com.estudo.java.swing.people.utils.DbUtils;
 
-public class PessoaDAO implements IAbstractDAO<Pessoa> {
+public class PersonDAO implements IAbstractDAO<Person> {
 
 	@Override
-	public List<Pessoa> all()
+	public List<Person> all()
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Connection conn = null;
 		try {
 			conn = DbUtils.getConnection();
 			ResultSet rs = DbUtils.getResultSet(conn, "SELECT * FROM peoples");
-			List<Pessoa> listaPessoas = new ArrayList<Pessoa>();
+			List<Person> listaPessoas = new ArrayList<Person>();
 			while (rs.next()) {
-				Pessoa pessoa = new Pessoa(rs.getInt("id"), rs.getString("name"), rs.getInt("age"));
+				Person pessoa = new Person(rs.getInt("id"), rs.getString("name"), rs.getInt("age"));
 				listaPessoas.add(pessoa);
 			}
 			return listaPessoas;
@@ -31,7 +31,7 @@ public class PessoaDAO implements IAbstractDAO<Pessoa> {
 	}
 
 	@Override
-	public Pessoa findById(int id)
+	public Person findById(int id)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Connection conn = null;
 		try {
@@ -41,7 +41,7 @@ public class PessoaDAO implements IAbstractDAO<Pessoa> {
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
 			if (rs.next()) {
-				Pessoa pessoa = new Pessoa(rs.getInt("id"), rs.getString("nome"), rs.getInt("age"));
+				Person pessoa = new Person(rs.getInt("id"), rs.getString("nome"), rs.getInt("age"));
 				return pessoa;
 			}
 			return null;
@@ -51,7 +51,7 @@ public class PessoaDAO implements IAbstractDAO<Pessoa> {
 	}
 
 	@Override
-	public void insert(Pessoa entity)
+	public void insert(Person entity)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Connection conn = null;
 		try {
@@ -67,7 +67,7 @@ public class PessoaDAO implements IAbstractDAO<Pessoa> {
 	}
 
 	@Override
-	public void update(Pessoa entity)
+	public void update(Person entity)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Connection conn = null;
 		try {
@@ -85,7 +85,7 @@ public class PessoaDAO implements IAbstractDAO<Pessoa> {
 	}
 
 	@Override
-	public void delete(Pessoa entity)
+	public void delete(Person entity)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Connection conn = null;
 		try {
